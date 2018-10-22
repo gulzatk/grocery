@@ -1,18 +1,19 @@
 
 $(document).ready(function() {
-  $(".groceries").submit(function(event) {
+  $(".formOne").submit(function(event) {
 
     event.preventDefault();
-    var str = $("input#groceryList").val();
-    var formNeeds = str.split(" ");
-    formNeeds.sort();
-    formNeeds.forEach(function(formNeed) {
-      var userInput = $("#groceryList" + formNeed).val();
+    var str = $("textarea#sentence").val();
+    var words = str.split(" ");
+    var newSentence = words.map(function(word) {
+     if(word.length >= 3){
+       return word + " ";
+     };
 
-      $(".list").append("<li>" + formNeed + "</li>");
-      $("#groceryList").hide();
+   });
+
+      $(".list").append(newSentence);
 
     })
 
   });
-});
